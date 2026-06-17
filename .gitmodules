@@ -1,0 +1,3 @@
+[submodule "extern/aim_simulator"]
+	path = extern/aim_simulator
+	url = https://github.com/arkhadem/aim_simulator

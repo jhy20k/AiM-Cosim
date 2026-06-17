@@ -1,0 +1,8 @@
+# TC-1: Single MAC16 unit test
+# WR_BIAS → MAC_ABK (1 row, opsize=4) → RD_MAC → EOC
+# Minimal: 1 row × 4 tiles = single MAC16 sequence
+
+AiM WR_BIAS 4 0xffffffff
+AiM MAC_ABK 4 0xffffffff 0
+AiM RD_MAC 4 0xffffffff
+AiM ISR_EOC

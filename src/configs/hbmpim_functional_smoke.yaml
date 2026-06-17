@@ -1,0 +1,49 @@
+# HBM-PIM Stage 5E: end-to-end functional smoke
+# Future work: HBM-PIM configs are experimental scaffolding and are not part of
+# the validated GDDR6-AiM RTL flow.
+# Runs the full path:
+# HBMPIMTrace -> IMemorySystem -> AiMRTL controller -> HBM2_PIM -> HBMPIMArchitectureBackend
+
+Frontend:
+  impl: HBMPIMTrace
+  clock_ratio: 1
+
+  Translation:
+    impl: NoTranslation
+    max_addr: 2147483648
+
+MemorySystem:
+  impl: AiMDRAM
+  clock_ratio: 1
+
+  hbm_pim:
+    enable_result_log: true
+
+  DRAM:
+    impl: HBM2_PIM
+    org:
+      preset: HBM2_2Gb
+    timing:
+      preset: HBM2_2Gbps
+
+  Controller:
+    impl: AiMRTL
+    clock_ratio: 1
+    architecture:
+      kind: hbm_pim
+    verilator:
+      enabled: false
+      result_log: "tests/result/stage5_eval/hbmpim_stage5e/rtl_results.csv"
+      logging:
+        buffer_size: 256
+        result_level: full
+        timing_level: off
+        schema_version: 1
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    plugins:
+
+  AddrMapper:
+    impl: RoBaRaCoCh

@@ -1,0 +1,42 @@
+{
+    "name": "aim-cosim-dev",
+
+    // Attach to the running container managed by docker-compose
+    "dockerComposeFile": "../docker/docker-compose.yml",
+    "service": "aim-cosim",
+    "workspaceFolder": "/workspace",
+
+    // VS Code extensions to install inside the container
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools-extension-pack"
+            ],
+            "settings": {
+                // C/C++ IntelliSense — use compile_commands.json from the default Makefile build dir
+                "C_Cpp.default.compileCommands": "/workspace/build_mag32/compile_commands.json",
+                "C_Cpp.default.cppStandard": "c++20",
+                "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+                "C_Cpp.default.includePath": [
+                    "/workspace/src/core",
+                    "/workspace/extern/aim_simulator/src",
+                    "/usr/local/share/verilator/include",
+                    "/usr/local/share/verilator/include/vltstd"
+                ],
+
+                // CMake
+                "cmake.buildDirectory": "/workspace/build_mag32",
+                "cmake.sourceDirectory": "/workspace",
+
+                // Editor
+                "files.trimTrailingWhitespace": true,
+                "editor.formatOnSave": false
+            }
+        }
+    },
+
+    // Post-attach: ensure build is configured
+    "postAttachCommand": "cmake -S . -B build_mag32 -GNinja -DACC_MAG_WIDTH=32 2>/dev/null || true"
+}

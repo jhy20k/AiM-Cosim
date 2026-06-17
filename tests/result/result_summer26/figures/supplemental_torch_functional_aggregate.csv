@@ -1,0 +1,8 @@
+model,model_source,projection_group,execution_rows,status,exact,within_1_ulp,within_2_ulp,max_ulp,avg_ulp_weighted,aimrtl_vs_torch_exact,aimrtl_vs_torch_within_1_ulp,aimrtl_vs_torch_within_2_ulp,aimrtl_vs_torch_max_ulp,aimrtl_vs_torch_avg_ulp_weighted
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.q_proj,2,ok,1520/2048,2048/2048,2048/2048,1,0.257812,2044/2048,2047/2048,2047/2048,3,0.002930
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.k_proj,1,ok,385/512,512/512,512/512,1,0.248047,511/512,512/512,512/512,1,0.001953
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.v_proj,1,ok,389/512,512/512,512/512,1,0.240234,512/512,512/512,512/512,0,0.000000
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.o_proj,2,ok,1521/2048,2048/2048,2048/2048,1,0.257325,2046/2048,2047/2048,2048/2048,2,0.001465
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.gate_proj,8,ok,6129/8192,8192/8192,8192/8192,1,0.251831,8189/8192,8190/8192,8191/8192,3,0.000732
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.up_proj,8,ok,6182/8192,8192/8192,8192/8192,1,0.245361,8188/8192,8191/8192,8191/8192,3,0.000733
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.down_proj,2,ok,1407/2048,1883/2048,1959/2048,14784,7.885742,1588/2048,1902/2048,1966/2048,14784,7.786133

@@ -1,0 +1,54 @@
+# AiM-Cosim Mode 2: Timing + Functional Co-verification (file-based data)
+# Uses AIMD binary exported from 1024_gemm.py for GPU comparison
+#
+# Usage:
+#   1. python 1024_gemm.py --p 1 --q 256 --r 256 --seed 42 --export-aimd --output-dir data/
+#   2. Update data_file path below
+#   3. ramulator2 -f aim_rtl_file.yaml -t trace.trace
+
+Frontend:
+  impl: AiMTrace
+  clock_ratio: 1
+
+  Translation:
+    impl: NoTranslation
+    max_addr: 2147483648
+
+MemorySystem:
+  impl: AiMDRAM
+  clock_ratio: 1
+
+  DRAM:
+    impl: GDDR6
+    org:
+      preset: GDDR6_AiM_org
+    timing:
+      preset: GDDR6_AiM_timing
+
+  Controller:
+    impl: AiMRTL
+    clock_ratio: 1
+    memory_manager:
+      num_banks: 16
+      max_rows: 16384
+      tiles_per_row: 128
+      init_mode: "file"
+      init_seed: 42
+      data_file: "matmul_p1_q256_r256_seed42.aimd"
+    verilator:
+      enabled: true
+      result_log: "tests/result/rtl_results.csv"
+      vcd_trace: false
+      vcd_file: "aim_rtl.vcd"
+      logging:
+        buffer_size: 65536
+        result_level: full
+        timing_level: off
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+    plugins:
+
+  AddrMapper:
+    impl: RoBaRaCoCh

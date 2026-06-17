@@ -1,0 +1,8 @@
+model,model_source,projection_group,execution_rows,status,cupy_cuda_mean_s_sum,cupy_cuda_median_s_sum,cupy_cuda_min_s_sum,cupy_cuda_max_s_sum
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.q_proj,2,ok,0.000270080,0.000267456,0.000218656,0.000333632
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.k_proj,1,ok,0.000071322,0.000058144,0.000053344,0.000105888
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.v_proj,1,ok,0.000113696,0.000112000,0.000082112,0.000136416
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.o_proj,2,ok,0.000201261,0.000194784,0.000153024,0.000302080
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.gate_proj,8,ok,0.000631717,0.000596256,0.000455840,0.000957408
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.up_proj,8,ok,0.001062515,0.000954528,0.000892512,0.001462880
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.down_proj,2,ok,0.000182316,0.000210848,0.000076672,0.000261888

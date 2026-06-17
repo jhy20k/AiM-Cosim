@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aim-cosim"
+version = "1.0.0"
+description = "AiM/Ramulator2 and Verilator co-simulation framework for GDDR6-AiM and HBM-PIM experiments"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Junghyeok Lee", email = "jhlee97@keti.re.kr"},
+    {name = "Seokhun Jeon", email = "seokhun.jeon@keti.re.kr"},
+]
+keywords = [
+    "aim",
+    "pim",
+    "ramulator2",
+    "verilator",
+    "cosimulation",
+    "bf16",
+    "hbm-pim",
+    "simulation",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Hardware",
+]
+
+dependencies = [
+    "numpy>=1.21.0",
+    "matplotlib>=3.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "flake8>=5.0.0",
+]
+
+llm = [
+    "torch>=2.0.0",
+    "transformers>=4.40.0",
+    "datasets>=2.0.0",
+]
+
+extra = [
+    "jupyter>=1.0.0",
+    "plotly>=5.0.0",
+    "pandas>=1.5.0",
+    "seaborn>=0.12.0",
+]
+
+[tool.setuptools]
+packages = []
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+include = "\\.pyi?$"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"

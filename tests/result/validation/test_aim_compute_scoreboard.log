@@ -1,0 +1,36 @@
+
+=== test_monotonic_mac16_ready ===
+  PASS: mac16 issue_ready monotonic actual=120 expected=120
+  PASS: mac16 visible_ready monotonic actual=120 expected=120
+  PASS: mac16 produced_epoch increments actual=2 expected=2
+
+=== test_missing_producer_consumer_fault ===
+  PASS: consumer without producer is missing-producer status=3
+
+=== test_bank_local_producer_gate ===
+  PASS: bank-local producer blocked before issue-ready status=1
+  PASS: bank-local producer releases at issue-ready status=0
+  PASS: bank-local producer increments bank epoch actual=1 expected=1
+  PASS: bank-local producer also increments aggregate epoch actual=1 expected=1
+
+=== test_latest_visible_epoch_controls_consumer ===
+  PASS: consumer waits for latest visible epoch status=2
+  PASS: consumer passes when latest visible epoch is ready status=0
+  PASS: latest visible_ready stored actual=135 expected=135
+  PASS: aggregate produced_epoch counts both producers actual=2 expected=2
+
+=== test_ewmul_single_bg_scope ===
+  PASS: ewmul bg0 untouched actual=-1 expected=-1
+  PASS: ewmul bg1 untouched actual=-1 expected=-1
+  PASS: ewmul bg2 updated actual=307 expected=307
+  PASS: ewmul bg3 untouched actual=-1 expected=-1
+
+=== test_ewmul_all_bg_scope ===
+  PASS: ewmul bg0 updated actual=409 expected=409
+  PASS: ewmul bg1 updated actual=409 expected=409
+  PASS: ewmul bg2 updated actual=409 expected=409
+  PASS: ewmul bg3 updated actual=409 expected=409
+
+=== SUMMARY ===
+Passed: 20 / 20
+AiM compute scoreboard helper PASS

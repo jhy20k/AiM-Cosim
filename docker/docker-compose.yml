@@ -1,0 +1,60 @@
+# =============================================================================
+# AiM-Cosim - Docker Compose Configuration
+# AiM Simulator + Verilator Co-verification Framework
+# =============================================================================
+
+name: aim-cosim
+
+services:
+  aim-cosim:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: aim-cosim:v1.0
+    container_name: aim-cosim-dev
+
+    volumes:
+      # 1. 소스 코드 마운트
+      - ..:/workspace:rw
+
+      # 2. aim_simulator submodule (extern/ 내부로 이동)
+      - ../extern/aim_simulator:/workspace/extern/aim_simulator:rw
+
+      # 3. CENT trace 생성용 (submodule 아님, extern/ 아래 볼륨 마운트)
+      #    CENT는 이미 aim_simulator를 자체 submodule로 포함하므로
+      #    중첩 submodule 충돌을 피하기 위해 볼륨 마운트 사용
+      - ../../CENT:/workspace/extern/CENT:rw
+
+      # 4. ccache (재빌드 속도 향상)
+      - aim-cosim-ccache:/workspace/.ccache
+
+      # 5. build 폴더 격리 (WSL2 성능 이슈 방지)
+      - aim-cosim-build:/workspace/build_mag32
+      - aim-simulator-build:/workspace/extern/aim_simulator/build
+
+    environment:
+      - VERILATOR_ROOT=/usr/local/share/verilator
+      - CCACHE_DIR=/workspace/.ccache
+      - CC=gcc-12
+      - CXX=g++-12
+      - TERM=xterm-256color
+
+    # 컨테이너 실행 유지
+    stdin_open: true
+    tty: true
+
+    working_dir: /workspace
+
+    networks:
+      - aim-cosim-network
+
+# 볼륨 정의
+volumes:
+  aim-cosim-ccache:
+  aim-cosim-build:
+  aim-simulator-build:
+
+# 네트워크 정의
+networks:
+  aim-cosim-network:
+    driver: bridge

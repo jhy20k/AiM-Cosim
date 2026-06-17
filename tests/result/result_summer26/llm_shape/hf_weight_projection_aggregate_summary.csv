@@ -1,0 +1,8 @@
+model,model_source,projection_group,conceptual_shape,execution_rows,chunked,mode2_memory_system_cycles_sum,mode2_wall_time_s_sum,exact,within_1_ulp,within_2_ulp,max_ulp,avg_ulp_weighted
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.q_proj,2048x2048,2,yes,67044,0.737961,1516/2048,2047/2048,2047/2048,3,0.260742
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.k_proj,2048x512,1,no,16251,0.221418,386/512,512/512,512/512,1,0.246094
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.v_proj,2048x512,1,no,16251,0.220273,389/512,512/512,512/512,1,0.240234
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,self_attn.o_proj,2048x2048,2,yes,67044,0.669100,1520/2048,2048/2048,2048/2048,1,0.257812
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.gate_proj,2048x8192,8,yes,268176,2.681904,6127/8192,8190/8192,8192/8192,2,0.252319
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.up_proj,2048x8192,8,yes,268176,2.627843,6180/8192,8191/8192,8191/8192,3,0.245850
+Llama3.2-1B-Instruct,https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct,mlp.down_proj,8192x2048,2,yes,263652,1.894997,1508/2048,2048/2048,2048/2048,1,0.263672
