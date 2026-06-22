@@ -7,7 +7,7 @@
 ## Key Contribution
 - Timing simulator의 PU 모델링 한계를 보완하기 위해 Verilator 기반 RTL Co-Simulation Engine을 Ramulator2.0 기반 AiM Simulator와 통합
 - SK하이닉스 GDDR6-AiM dataflow와 PU를 반영하여 RTL 모델 설계
-- PU 동작 지연시간을 DRAM timing model에서 정의된 지연시간과 별도로 분석하며 RTL PU latency를 timing simulator와 동기화
+- PU 동작 지연시간을 AiM Simulator의 DRAM timing model에서 정의된 지연시간과 별도로 분석하며 RTL PU latency가 AiM simulator에서 추상화된 PU 동작 지연시간보다 크다면 RTL PU latency로 동기화
 
 ## 저장소 구조
 
